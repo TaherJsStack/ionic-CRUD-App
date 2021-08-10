@@ -1,5 +1,7 @@
 {
   "name": "ion-CRUD",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

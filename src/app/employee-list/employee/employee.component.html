@@ -1,0 +1,55 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ employeeData.name }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeEmployeeModal()" color="danger">
+        <ion-icon name="close-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- List Headers in Lists -->
+  <ion-list>
+
+    <ion-list-header lines="inset" >
+      <ion-label>{{employeeData.name}}</ion-label>
+    </ion-list-header>
+
+    <ion-item lines="none">
+      <ion-label><span>ID</span>  : {{ employeeData.id }} </ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label><span>NAME</span> : {{ employeeData.name }} </ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label><span>JOB</span> : {{ employeeData.job }} </ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label><span>E-MAIL</span>: {{ employeeData.email }} </ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label><span>PHONE</span> : {{ employeeData.phone }} </ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label><span>GENDER</span> : {{ employeeData.gender }} </ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label><span>NOTES</span> : {{ employeeData.notes }} </ion-label>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label><span>ADDED DAY</span> : {{ employeeData.createdAt }}} </ion-label>
+    </ion-item>
+
+  </ion-list>
+
+</ion-content>

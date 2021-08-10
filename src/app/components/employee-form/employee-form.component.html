@@ -1,0 +1,73 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ editMode ? 'Edit ' + employeeData?.name : 'Employee Form'}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeEmployeeFormModal()" color="danger">
+        <ion-icon name="close-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <h4 class="ion-text-center" > <ion-icon name="ribbon" color="danger"></ion-icon> CRUD Form </h4>
+
+  <form (ngSubmit)="onSubmitEmployee()" [formGroup]="employeeForm">
+
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="floating"><ion-icon name="person" slot="icon-only"></ion-icon> Name </ion-label>
+        <ion-input type="text" required formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-text color="danger" *ngIf="isEmployeeExist" color="danger"><h6>Employee Exist !!</h6></ion-text>
+        <ion-label position="floating"><ion-icon name="at" slot="icon-only"></ion-icon> Email </ion-label>
+        <ion-input (ionBlur)="checkEmailInput(email.value)" #email type="email" required formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating"><ion-icon name="business" slot="icon-only"></ion-icon> Job </ion-label>
+        <ion-input type="text" required formControlName="job"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating"><ion-icon name="call" slot="icon-only"></ion-icon> Phone No </ion-label>
+        <ion-input type="number" required formControlName="phone"></ion-input>
+      </ion-item>
+
+      <ion-item>
+
+        <ion-grid class="gender">
+          <h5><ion-icon name="people" size="small"></ion-icon>  Gender </h5>
+          <mat-radio-group aria-label="Select an option" formControlName="gender" (ionChange)="onGenderChangeHandler($event)">
+            <mat-radio-button value="male">
+                <ion-icon name="man" slot="icon-only"></ion-icon> Male
+              </mat-radio-button>
+            <mat-radio-button value="female">
+              <ion-icon name="woman" slot="icon-only"></ion-icon> Female
+            </mat-radio-button>
+          </mat-radio-group>
+        </ion-grid>
+
+      </ion-item>
+
+      <ion-item>
+        <ion-label><ion-icon name="create"></ion-icon> Notes</ion-label>
+        <ion-textarea required rows="4" cols="20" formControlName="notes" placeholder="Enter any notes here..."></ion-textarea>
+      </ion-item>
+
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" expand="block" [disabled]="!employeeForm.valid">{{ editMode ? 'Update' : 'Add New Employee'}}</ion-button>
+        </ion-col>
+      </ion-row>
+
+    </ion-list>
+
+  </form>
+
+
+</ion-content>
